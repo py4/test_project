@@ -18,4 +18,5 @@ test:
 
 production:
   <<: *default
+  username: ubuntu
   database: test_project_production
