@@ -56,10 +56,16 @@ namespace :deploy do
     end
   end
 
+  after "deploy", "deploy:create_symlinks"
+  #after "deploy", "deploy:restart"
+  after "deploy", "deploy:cleanup"
+
+
   desc "Symlink shared config file"
-  task :symlink_config_files do
+  task :create_symlinks do
     run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
   end
+
 
 
 
